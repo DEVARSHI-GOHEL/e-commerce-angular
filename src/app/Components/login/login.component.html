@@ -1,0 +1,48 @@
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <section class="vh-100">
+        
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <h1 class="text-center">Welcome to online shop!</h1>
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+
+                            <h2 class="mb-3">Log In</h2>
+                            <hr />
+
+                            <div class="form my-2">
+                                <input type="email" id="typeEmailX-2" class="form-control form-control-lg"
+                                    formControlName="email" placeholder="Email" />
+                            </div>
+                            <mdb-error *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+                                <span class='text-danger d-flex justify-content-start fw-bold'>
+                                    Enter valid email address
+                                </span>
+                            </mdb-error>
+                            <div class="form my-2">
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
+                                    formControlName="password" placeholder="Password" />
+                            </div>
+                            <mdb-error *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+                                <span class='text-danger d-flex justify-content-start fw-bold'>
+                                    Password is required
+                                </span>
+                            </mdb-error>
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+
+                            <hr class="my-4">
+
+                            <div>
+                                <p>Don't have an account? <a routerLink="signup" class="text-50 fw-bold" (click)="onSignupClick()">Sign
+                                        Up</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
