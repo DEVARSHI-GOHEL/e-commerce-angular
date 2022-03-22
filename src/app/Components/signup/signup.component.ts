@@ -1,3 +1,4 @@
+import { pipe } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -48,18 +49,10 @@ export class SignupComponent implements OnInit {
     const { email, password, confirm_password } = this.signupForm.value;
 
     if (password !== confirm_password){
-      console.log('password', password, 'con', confirm_password)
+      // console.log('password', password, 'con', confirm_password)
       return alert('Passwords dont match')
     }
 
-    this.authService.signup(email, password).pipe(
-      this.toast.observe({
-        success: 'Signed In',
-        loading: 'Signing you in...',
-        error: ({ message }) => message
-      })
-    ).subscribe(() => {
-      this.router.navigate([''])
-    })
+    this.authService.signup(email, password)
   }
 }

@@ -1,4 +1,4 @@
-import { HotToastService } from '@ngneat/hot-toast';
+import { HotToastService, HotToastModule } from '@ngneat/hot-toast';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private toast: HotToastService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
   }
@@ -32,23 +32,15 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password')
   }
 
-  submit(){
-    if(!this.loginForm.valid) return;
+  submit() {
+    if (!this.loginForm.valid) return;
 
     const { email, password } = this.loginForm.value;
-    
-    this.authService.login(email, password).pipe(
-      this.toast.observe({
-        success: 'Logged In',
-        loading: 'Logging In...',
-        error: ({ message }) => message,
-      })
-    ).subscribe(() => {
-      this.router.navigate([''])
-    })
+
+    this.authService.login(email, password)
   }
 
-  onSignupClick(){
+  onSignupClick() {
     this.router.navigate(['signup'])
   }
 }

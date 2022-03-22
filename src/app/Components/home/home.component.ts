@@ -1,3 +1,4 @@
+import { Products } from './../../models/products.model';
 import { AuthenticationService } from './../../services/authentication.service';
 import { Auth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
@@ -9,9 +10,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  user$ = this.authService.currentUser$
 
-  constructor(public authService: AuthenticationService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
