@@ -1,3 +1,4 @@
+import { User } from './../models/users.model';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -7,7 +8,6 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { from, pipe } from 'rxjs'
-import { User } from '../models/users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +47,7 @@ export class AuthenticationService {
     return this.auth.createUserWithEmailAndPassword(email, password).then(res => {
       localStorage.setItem('user', JSON.stringify(res.user))
       this.router.navigate(['home']);
+      console.log(res.user)
       this.setUserData(res.user)
     }, err => {
       alert(err.message);

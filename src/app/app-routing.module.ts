@@ -1,3 +1,4 @@
+import { CartComponent } from './Components/cart/cart.component';
 import { UnauthGuard } from './guards/unauth.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { SignupComponent } from './Components/signup/signup.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
     canActivate: [UnauthGuard]
   },
   { path: 'signup', component: SignupComponent, canActivate: [UnauthGuard]},
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] }
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

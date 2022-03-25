@@ -1,7 +1,9 @@
 export interface Products {
-    name: string,
-    img: string,
-    price: string,
-    quantity: string,
-    category: string
+    'Uniq Id': string,
+    'About Product': string
+    'Product Name': string,
+    'Image': string,
+    'Selling Price': string,
+    'Quantity': string,
+    'Category': string
 }

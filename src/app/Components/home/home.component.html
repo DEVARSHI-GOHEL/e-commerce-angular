@@ -1,1 +1,30 @@
-<app-navbar>
+<div *ngIf="products; else loading">
+    <app-navbar></app-navbar>
+    <div class="container-fluid my-3">
+        <div class="row">
+            <div class="col-1 text-end" style="min-width: auto;">
+                <label>Category:</label>
+            </div>
+            <div class="col-1 text-start">
+                <select class (change)="selectChangeHandler($event)">
+                    <option ngValue="All" selected>All</option>
+                    <option *ngFor="let category of categories" [ngValue]="category">{{category}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 col-sm-1 my-3 d-flex justify-content-center"
+                *ngFor="let product of products | filter: filt">
+                <app-products-list [product]="product"></app-products-list>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loading>
+    <div class="d-flex justify-content-center m-2 align-items-center" style="min-height: 90vh;">
+        <app-loading></app-loading>
+    </div>
+</ng-template>

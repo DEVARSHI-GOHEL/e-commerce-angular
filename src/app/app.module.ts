@@ -34,6 +34,14 @@ import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
 import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
+import { ProductsListComponent } from './Components/products-list/products-list.component';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { LoopingRhumbusesSpinnerModule } from 'angular-epic-spinners'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CartComponent } from './Components/cart/cart.component';
+import { LoadingComponent } from './Components/loading/loading.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 
 @NgModule({
@@ -42,7 +50,11 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
     NavbarComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsListComponent,
+    SidebarComponent,
+    CartComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +78,12 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
     MdbScrollspyModule,
     MdbTabsModule,
     MdbTooltipModule,
-    MdbValidationModule
+    MdbValidationModule,
+    LoopingRhumbusesSpinnerModule,
+    Ng2SearchPipeModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
   ],
   providers: [
     AuthenticationService,

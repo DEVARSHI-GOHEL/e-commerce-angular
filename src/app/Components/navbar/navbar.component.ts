@@ -10,13 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authService: AuthenticationService, private toast: HotToastService, private router: Router) { }
-
+  constructor(private authService: AuthenticationService, private router: Router) { }
+  
   ngOnInit(): void {
   }
 
   logout(){
     this.authService.logout()
+  }
+
+  gotoCart(){
+    this.router.navigate(['cart'])
   }
 
 }
