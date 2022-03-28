@@ -4,6 +4,6 @@ export interface Products {
     'Product Name': string,
     'Image': string,
     'Selling Price': string,
-    'Quantity': string,
+    'qty': number,
     'Category': string
 }

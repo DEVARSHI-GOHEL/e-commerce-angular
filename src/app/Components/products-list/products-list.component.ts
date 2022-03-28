@@ -1,3 +1,4 @@
+import { CartService } from './../../services/cart.service';
 import { ProductsService } from './../../services/products.service';
 import { Router } from '@angular/router';
 import { Products } from './../../models/products.model';
@@ -10,17 +11,21 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ProductsListComponent implements OnInit {
 
-  @Input() product: Products | undefined 
+  @Input() product: Products | undefined
 
-  constructor(private router: Router, private productService: ProductsService) {
+  constructor(
+    private router: Router,
+    private productService: ProductsService,
+    private cartService: CartService
+  ) {
   }
 
   ngOnInit(): void {
   }
 
-  cartClicked(id: any){
-    this.productService.getProductFromId(id)
-    this.router.navigate(['cart'])
+  cartClicked(product: any) {
+    this.cartService.addToCart(product)
+    // this.router.navigate(['cart'])
   }
 
 }

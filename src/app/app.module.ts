@@ -1,3 +1,4 @@
+import { Products } from 'src/app/models/products.model';
 import { AuthenticationService } from './services/authentication.service';
 
 import { NgModule } from '@angular/core';
@@ -41,8 +42,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './Components/cart/cart.component';
 import { LoadingComponent } from './Components/loading/loading.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
-
+import { CartListComponent } from './Components/cart-list/cart-list.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +54,8 @@ import { reducers, metaReducers } from './reducers';
     ProductsListComponent,
     SidebarComponent,
     CartComponent,
-    LoadingComponent
+    LoadingComponent,
+    CartListComponent
   ],
   imports: [
     BrowserModule,
@@ -81,9 +82,6 @@ import { reducers, metaReducers } from './reducers';
     MdbValidationModule,
     LoopingRhumbusesSpinnerModule,
     Ng2SearchPipeModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
   ],
   providers: [
     AuthenticationService,

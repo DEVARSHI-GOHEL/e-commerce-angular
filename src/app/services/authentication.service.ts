@@ -1,3 +1,4 @@
+import { CartService } from './cart.service';
 import { User } from './../models/users.model';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
@@ -21,6 +22,7 @@ export class AuthenticationService {
     private router: Router,
     private toast: HotToastService,
     private firestore: AngularFirestore,
+    private cartService: CartService
   ) { }
 
   login(email: string, password: string) {
@@ -36,6 +38,7 @@ export class AuthenticationService {
   logout() {
     this.auth.signOut().then(() => {
       localStorage.setItem('user', 'null');
+      this.cartService.clearCart()
       JSON.parse(localStorage.getItem('user')!)
       this.router.navigate(['login']);
     }, err => {

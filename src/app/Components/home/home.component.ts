@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
 
   selectChangeHandler(event: any) {
     this.filt = event.target.value
-    console.log(this.filt)
   }
 
   ngOnInit(): void {

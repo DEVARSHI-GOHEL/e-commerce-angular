@@ -1,6 +1,9 @@
+import { Products } from 'src/app/models/products.model';
+import { CartService } from './cart.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Injectable, Output } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,24 +11,23 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 export class ProductsService {
 
   productsCollection: AngularFirestoreCollection
-  productDoc: AngularFirestoreDocument
+  productDoc: AngularFirestoreDocument | undefined
 
   products: any
   product: any
-  cartProducts: any
 
-  constructor(private afs: AngularFirestore, private toast: HotToastService) {
+  constructor(
+    private afs: AngularFirestore,
+    private toast: HotToastService,
+    private cartService: CartService
+  ) {
     this.productsCollection = this.afs.collection('products');
-    this.productDoc = this.afs.doc('products/1')
-  }
-
-  getProductFromId(id: any){
-    // console.log(id)
-    this.product = this.productDoc.valueChanges(id).subscribe(product => {
-    })
   }
 
   getProducts() {
-      return this.productsCollection.valueChanges()
+    this.productsCollection.valueChanges().subscribe(data => {
+      this.products = data
+    })
+    return this.productsCollection.valueChanges()
   }
 }
