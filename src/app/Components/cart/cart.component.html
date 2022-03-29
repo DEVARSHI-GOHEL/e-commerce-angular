@@ -2,8 +2,9 @@
 
 <div *ngIf="cartItems.length !== 0 ; else emptycart">
     <div *ngFor="let item of cartItems">
-        <app-cart-list [cartItem] = "item"></app-cart-list>
+        <app-cart-list [cartItem]="item"></app-cart-list>
     </div>
+    <app-total-price></app-total-price>
 </div>
 
 <ng-template #emptycart>
@@ -17,4 +18,5 @@
             </div>
         </div>
     </div>
+
 </ng-template>

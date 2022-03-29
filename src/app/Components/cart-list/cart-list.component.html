@@ -2,8 +2,10 @@
     <div class="d-flex justify-content-center row">
         <div class="col-md-12">
             <div class="row p-2 bg-white border rounded">
-                <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image"
-                        src={{cartItem?.Image}} style="width: 256.5px; height: 256.5px;"></div>
+                <div class="col-md-3 mt-1">
+                    <img class="img-fluid img-responsive rounded product-image" src={{cartItem?.Image}}
+                        style="width: 256.5px; height: 256.5px;">
+                </div>
                 <div class="col-md-6 mt-1">
                     <h3>{{cartItem?.['Product Name']}}</h3>
                     <p class="text-justify para mb-0">
@@ -14,16 +16,19 @@
                 <div class="align-items-center align-content-center col-md-3 border-left mt-1">
                     <div class="d-flex flex-row align-items-center">
                         <h4 class="mr-1">{{cartItem?.['Selling Price']}}
-                            <span>  X  </span>
+                            <span> X </span>
                         </h4>
-                        <h4 class="px-1">  {{cartItem?.qty}}</h4>
+                        <h4 class="px-1"> {{cartItem?.qty}} = {{subtotal}}</h4>
                     </div>
-                    <h6 class="text-success">Free shipping</h6>
-                    <div class="d-flex flex-column mt-4">
-                        <button class="btn btn-outline-primary btn-sm mt-2" type="button">Add to wishlist
+                    <div class="d-flex justify-content-center mt-4">
+                        <button class="btn btn-warning remove-cart btn-sm mt-2" (click)="removeCart(cartItem)"
+                            title="Remove From Cart" type="button">
+                            <i class="fas fa-minus-circle px-2">
+                            </i>
                         </button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

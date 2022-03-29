@@ -1,0 +1,26 @@
+<form (ngSubmit)="submit(name.value, email.value, contact.value, address.value)">
+    <div class="card shadow-2-strong" style="border-radius: 1rem; width: 40vw;">
+        <div class="card-body p-5 text-center">
+
+            <h2 class="mb-3">Payment Details</h2>
+            <hr />
+
+            <div class="form my-2">
+                <input type="text" class="form-control form-control-lg" placeholder="Name" #name required />
+            </div>
+            <div class="form my-2">
+                <input type="email" class="form-control form-control-lg" placeholder="Email" #email required />
+            </div>
+            <div class="form my-2">
+                <input type="tel" pattern="^[6-9]\d{9}$" class="form-control form-control-lg" #contact placeholder="Contact"
+                    required />
+            </div>
+            <div class="form my-2">
+                <input type="text" textarea rows=3 class="form-control form-control-lg" #address placeholder="Address"
+                    style=" min-height: 90px" required />
+            </div>
+
+            <button class="btn btn-success btn-lg btn-block" type="submit">Order</button>
+        </div>
+    </div>
+</form>

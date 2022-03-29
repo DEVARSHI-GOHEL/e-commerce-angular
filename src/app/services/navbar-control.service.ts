@@ -18,4 +18,5 @@ export class NavbarControlService {
   hideCart(){
     this.visible = false
   }
+
 }

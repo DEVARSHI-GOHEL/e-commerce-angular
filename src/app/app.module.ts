@@ -41,8 +41,11 @@ import { LoopingRhumbusesSpinnerModule } from 'angular-epic-spinners'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CartComponent } from './Components/cart/cart.component';
 import { LoadingComponent } from './Components/loading/loading.component';
-import { StoreModule } from '@ngrx/store';
 import { CartListComponent } from './Components/cart-list/cart-list.component';
+import { TotalPriceComponent } from './Components/total-price/total-price.component';
+import { OrderComponent } from './Components/order/order.component';
+import { OrderSummaryComponent } from './Components/order-summary/order-summary.component';
+import { PaymentComponent } from './Components/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,11 @@ import { CartListComponent } from './Components/cart-list/cart-list.component';
     SidebarComponent,
     CartComponent,
     LoadingComponent,
-    CartListComponent
+    CartListComponent,
+    TotalPriceComponent,
+    OrderComponent,
+    OrderSummaryComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

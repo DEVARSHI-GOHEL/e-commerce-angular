@@ -5,5 +5,6 @@ export interface Products {
     'Image': string,
     'Selling Price': string,
     'qty': number,
-    'Category': string
+    'Category': string,
+    'date': string
 }

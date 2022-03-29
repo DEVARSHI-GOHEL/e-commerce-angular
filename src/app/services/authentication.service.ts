@@ -66,7 +66,10 @@ export class AuthenticationService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      username: "",
+      delivery_address: "",
+      contact: "",
+      order_email: ""
     };
     return userRef.set(userData, {
       merge: true

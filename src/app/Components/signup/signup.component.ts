@@ -1,11 +1,8 @@
-import { pipe } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { localizedString } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-signup',

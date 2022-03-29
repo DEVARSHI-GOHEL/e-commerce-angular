@@ -1,5 +1,8 @@
 export interface User {
   uid: string;
   email: string;
-  displayName: string;
+  username: string;
+  order_email: string;
+  delivery_address: string;
+  contact: any
 }

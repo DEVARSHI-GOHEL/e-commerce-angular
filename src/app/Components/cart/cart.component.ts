@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class CartComponent implements OnInit {
 
   cartItems: any
+  price: any
 
   constructor(
     private navController: NavbarControlService,
@@ -22,7 +23,6 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     // localStorage.setItem('cart-items', JSON.stringify(this.cartService.getCartProducts()))
     this.cartItems = this.cartService.getCartProducts()
-    
     // JSON.parse(localStorage.getItem('cart-items') || '{}')
   }
 

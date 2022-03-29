@@ -1,3 +1,4 @@
+import { CartService } from './../../services/cart.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Products } from 'src/app/models/products.model';
 
@@ -9,10 +10,16 @@ import { Products } from 'src/app/models/products.model';
 export class CartListComponent implements OnInit {
 
   @Input() cartItem: any | undefined
+  subtotal: number = 0
 
-  constructor() { }
+  constructor(private cartSevice: CartService) { }
 
   ngOnInit(): void {
+    this.subtotal = this.cartItem.qty * this.cartItem['Selling Price'].slice(1)
+  }
+
+  removeCart(product: Products){
+    this.cartSevice.removeFromCart(product['Uniq Id'])
   }
 
 }
