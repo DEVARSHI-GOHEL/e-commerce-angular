@@ -4,5 +4,6 @@ export interface User {
   username: string;
   order_email: string;
   delivery_address: string;
-  contact: any
+  contact: any,
+  orders: [],
 }

@@ -23,7 +23,6 @@ export class ProductsListComponent implements OnInit {
 
   cartClicked(product: any) {
     this.cartService.addToCart(product)
-    this.router.navigate(['cart'])
   }
 
 }

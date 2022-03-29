@@ -8,7 +8,7 @@ import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
-import { from, pipe } from 'rxjs'
+import { from, pipe, throwIfEmpty } from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,9 @@ import { from, pipe } from 'rxjs'
 export class AuthenticationService {
 
   userData: any;
+  user = JSON.parse(localStorage.getItem('user') || '')
+  currentUser: any;
+
 
   constructor(
     private auth: AngularFireAuth,
@@ -50,7 +53,6 @@ export class AuthenticationService {
     return this.auth.createUserWithEmailAndPassword(email, password).then(res => {
       localStorage.setItem('user', JSON.stringify(res.user))
       this.router.navigate(['home']);
-      console.log(res.user)
       this.setUserData(res.user)
     }, err => {
       alert(err.message);
@@ -69,7 +71,8 @@ export class AuthenticationService {
       username: "",
       delivery_address: "",
       contact: "",
-      order_email: ""
+      order_email: "",
+      orders: []
     };
     return userRef.set(userData, {
       merge: true

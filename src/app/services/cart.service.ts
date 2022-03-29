@@ -1,6 +1,6 @@
+import { HotToastService } from '@ngneat/hot-toast';
 import { Products } from './../models/products.model';
 import { Injectable } from '@angular/core';
-import { isTemplateRef } from '@ngneat/overview';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,9 @@ export class CartService {
   flag: boolean | undefined;
   totalPrice: number = 0
 
-  constructor() {
+  constructor(
+    private toast: HotToastService
+  ) {
   }
 
   clearCart() {
@@ -22,16 +24,15 @@ export class CartService {
     this.flag = true
     this.cartItems.forEach((item: Products, index) => {
       if (item['Uniq Id'] === product['Uniq Id']) {
+        this.toast.info('Item quantity updated in cart', {duration: 2000})
         this.flag = false
         this.cartItems[index].qty += 1
       }
     })
     if (this.flag) {
+      this.toast.success('New product added to cart', {duration: 2000})
       this.cartItems.push({ ...product, qty: 1 })
     }
-
-
-
   }
 
   getTotalPrice() {
