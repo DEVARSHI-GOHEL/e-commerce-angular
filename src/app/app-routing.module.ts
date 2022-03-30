@@ -1,3 +1,4 @@
+import { SuccessPageComponent } from './Components/success-page/success-page.component';
 import { PaymentGuard } from './guards/payment.guard';
 import { OrderSummaryComponent } from './Components/order-summary/order-summary.component';
 import { CartComponent } from './Components/cart/cart.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent, canActivate: [UnauthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
-  { path: 'order', component: OrderComponent, canActivate: [PaymentGuard] }
+  { path: 'order', component: OrderComponent, canActivate: [PaymentGuard] },
+  { path: 'successful', component: SuccessPageComponent, canActivate: [PaymentGuard] }
 ];
 
 @NgModule({

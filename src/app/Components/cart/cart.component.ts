@@ -29,4 +29,8 @@ export class CartComponent implements OnInit {
     this.router.navigate(['order'])
   }
 
+  gotoHome(){
+    this.router.navigate(['home'])
+  }
+
 }

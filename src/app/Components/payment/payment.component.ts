@@ -28,7 +28,7 @@ export class PaymentComponent implements OnInit {
     this.userRef = this.firestore.doc(
       `users/${this.user.uid}`
     )
-  
+
     this.userRef.valueChanges().subscribe((user: any) => {
       this.currentUser = user
     })
@@ -38,20 +38,29 @@ export class PaymentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit(name: any, email: any, contact: any, address: any) {
-
-    let userData = {
-      contact: contact,
-      delivery_address: address,
-      username: name,
-      order_email: email,
-      orders: [...this.currentUser.orders , {...this.orders}]
+  isValid(name: any, email: any, contact: any, address: any) {
+    if (name === "" || email === "" || contact === "" || address === "") {
+      alert("Fields with (*) are required")
+      return false
     }
-
-    this.userRef.update(userData)
-
-    this.cartService.clearCart()
-    this.router.navigate(['home'])
+    return true
   }
 
+  submit(name: any, email: any, contact: any, address: any) {
+
+    if (this.isValid(name, email, contact, address)) {
+      let userData = {
+        contact: contact,
+        delivery_address: address,
+        username: name,
+        order_email: email,
+        orders: [...this.currentUser.orders, { ...this.orders }]
+      }
+
+      this.userRef.update(userData)
+
+      this.router.navigate(['successful'])
+
+    }
+  }
 }

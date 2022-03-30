@@ -16,7 +16,7 @@
             <button class="btn btn-warning btn-sm " (click)="logout()">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
             </button>
-            <button class="btn btn-primary btn-sm mx-2" [disabled]="" (click)="gotoCart()">
+            <button class="btn btn-primary btn-sm mx-2" [disabled]="isCartEmpty()" (click)="gotoCart()">
                 <i class="fa-solid fa-bag-shopping"></i>
             </button>
         </div>

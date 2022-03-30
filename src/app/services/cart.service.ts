@@ -33,6 +33,9 @@ export class CartService {
       this.toast.success('New product added to cart', {duration: 2000})
       this.cartItems.push({ ...product, qty: 1 })
     }
+    if(this.cartItems.length === 1){
+      this.toast.show('You can tap on cart button to see products in cart', {duration: 3000})
+    }
   }
 
   getTotalPrice() {
