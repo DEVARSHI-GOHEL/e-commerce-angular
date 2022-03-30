@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { CartService } from './../../services/cart.service';
 import { ProductsService } from './../../services/products.service';
 import { NavbarControlService } from './../../services/navbar-control.service';
@@ -17,13 +18,15 @@ export class CartComponent implements OnInit {
   constructor(
     private navController: NavbarControlService,
     private productService: ProductsService,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-    // localStorage.setItem('cart-items', JSON.stringify(this.cartService.getCartProducts()))
     this.cartItems = this.cartService.getCartProducts()
-    // JSON.parse(localStorage.getItem('cart-items') || '{}')
+  }
+  gotoOrder() {
+    this.router.navigate(['order'])
   }
 
 }
