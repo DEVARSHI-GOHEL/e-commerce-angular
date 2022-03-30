@@ -16,7 +16,7 @@ import { from, pipe, throwIfEmpty } from 'rxjs'
 export class AuthenticationService {
 
   userData: any;
-  user = JSON.parse(localStorage.getItem('user') || '')
+  user: any
   currentUser: any;
 
 
@@ -61,6 +61,7 @@ export class AuthenticationService {
   }
 
   setUserData(user: any) {
+    this.user = JSON.parse(localStorage.getItem('user')!)
     const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${user.uid}`
     );
